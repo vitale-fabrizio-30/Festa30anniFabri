@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trova il tuo Match</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#6a11cb,#2575fc)}
+.container{min-height:100vh;background:#fff;color:#333;padding:16px 20px}
+h1{text-align:center;color:#6a11cb;font-size:1.9rem;margin:0 0 10px}
+p{font-size:1rem;line-height:1.35;margin:8px 0}
+h3{color:#6a11cb;margin:12px 0 8px}
+.rules{padding-left:22px;margin:0 0 14px}
+.rules li{margin-bottom:8px;line-height:1.3}
+input{width:100%;padding:12px;font-size:16px;border:1px solid #ccc;border-radius:8px}
+button{width:100%;padding:14px;margin-top:10px;background:#6a11cb;color:#fff;border:0;border-radius:10px;font-size:16px;font-weight:bold}
+#word{display:none;text-align:center;margin-top:14px;padding:16px;background:#f5f0ff;border-radius:12px}
+.category-label{font-size:.78rem;font-weight:bold;letter-spacing:1.5px;color:#777;margin-bottom:3px}
+.category{font-size:1.05rem;font-weight:bold;color:#6a11cb;margin-bottom:18px}
+.word-label{font-size:.85rem;font-weight:bold;letter-spacing:1.8px;color:#e91e63;margin-bottom:4px}
+.word{font-size:2.8rem;font-weight:900;color:#e91e63;line-height:1.1;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🎉 TROVA IL TUO MATCH 🎉</h1>
+<p><strong>Benvenuto alla festa dei 30 anni di Fabrizio!</strong></p>
+<p>Trova la persona che possiede la parola che completa la tua coppia e conquista il tuo gadget spaziale.</p>
+<h3>Regole</h3>
+<ul class="rules">
+<li>🔒 Non rivelare la tua parola.</li>
+<li>💬 Dai indizi e fai domande per scovare il tuo match.</li>
+<li>🥂 Quando trovi il Match fate un brindisi e inviate un selfie al festeggiato.</li>
+<li>🚀 Missione compiuta! Vai da Fabrizio per ritirare il gadget spaziale!</li>
+</ul>
+<form onsubmit="showWord();return false;">
+<label><strong>Inserisci il tuo nome e cognome</strong></label><br><br>
+<input type="text" id="guest" placeholder="Nome e cognome" autocomplete="off">
+<button type="submit">SCOPRI LA TUA PAROLA</button>
+</form>
+<div id="word"></div>
+</div>
+<script>
+const data={"mario belmonte":"Mazzarri","lello la marca":"Cavani","alberto vitale":"Hamsik","luigi orefice":"Lavezzi","martina romano":"Peach","roberto tucci":"Bowser","enzo gargiulo":"Mario Bros","nando lanzetti":"Luigi","antonio della luce":"Pikachu","angelo marrazzo":"Charmander","francesco giuliani":"Squirtle","alessandra annunziata":"Bulbasaur","carmela orefice":"Nala","giacomo vitale":"Mufasa","greta orefice":"Simba","rosita testa":"Scar","antonella vitale":"Tinky Winky","federica franceschini":"Laa-Laa","lorenzo scarica":"Dipsy","mattia fumo":"Po","michela scognamiglio":"Black Widow","maria mutton":"Captain America","davide annunziata":"Thor","elisa orefice":"Iron Man","pietro manzi":"Michelangelo","saverio orefice":"Donatello","enrico huber":"Raffaello","picca":"Leonardo","fiorita porricelli":"Jasmine","pasquale vitale":"Aladdin","carmen annunziata":"Genio","rosaria odoroso":"Jafar","salvatore orefice":"Harry Potter","giorgia vitale":"Hermione","vincenzo orefice":"Albus Silente","luciana balletta":"Draco Malfoy","rosalba speranza":"Gaspare","fulvia ciucci":"Melchiorre","patrizia calemme":"Baldassarre","margherita persico":"John Lennon","bianca stanescu":"Paul McCartney","laura lorenzi":"George Harrison","anna biancardi":"Ringo Starr"};
+const categories={"mario belmonte":"Napoli","lello la marca":"Napoli","alberto vitale":"Napoli","luigi orefice":"Napoli","martina romano":"Super Mario","roberto tucci":"Super Mario","enzo gargiulo":"Super Mario","nando lanzetti":"Super Mario","antonio della luce":"Pokémon","angelo marrazzo":"Pokémon","francesco giuliani":"Pokémon","alessandra annunziata":"Pokémon","carmela orefice":"Il Re Leone","giacomo vitale":"Il Re Leone","greta orefice":"Il Re Leone","rosita testa":"Il Re Leone","antonella vitale":"Teletubbies","federica franceschini":"Teletubbies","lorenzo scarica":"Teletubbies","mattia fumo":"Teletubbies","michela scognamiglio":"Avengers","maria mutton":"Avengers","davide annunziata":"Avengers","elisa orefice":"Avengers","pietro manzi":"Tartarughe Ninja","saverio orefice":"Tartarughe Ninja","enrico huber":"Tartarughe Ninja","picca":"Tartarughe Ninja","fiorita porricelli":"Aladdin","pasquale vitale":"Aladdin","carmen annunziata":"Aladdin","rosaria odoroso":"Aladdin","salvatore orefice":"Harry Potter","giorgia vitale":"Harry Potter","vincenzo orefice":"Harry Potter","luciana balletta":"Harry Potter","rosalba speranza":"Re Magi","fulvia ciucci":"Re Magi","patrizia calemme":"Re Magi","margherita persico":"Beatles","bianca stanescu":"Beatles","laura lorenzi":"Beatles","anna biancardi":"Beatles"};
+function showWord(){
+var nome=(document.getElementById('guest').value||'').trim().replace(/\s+/g,' ').toLowerCase();
+var parola=data[nome];
+if(!parola){alert('Nome non trovato');return false;}
+var w=document.getElementById('word');
+w.style.display='block';
+var categoria=categories[nome]||''; w.innerHTML='<div class="category-label">CATEGORIA</div><div class="category">'+categoria+'</div><div class="word-label">LA TUA PAROLA</div><div class="word">'+parola+'</div>';
+return false;
+}
+</script>
+</body>
+</html>
